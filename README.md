@@ -105,4 +105,6 @@ Each pattern is drawn looking at the face the flanges fold toward, so every bend
 
 ## License
 
-No license has been chosen yet. Until one is added, all rights are reserved by the author.
+[CC0 1.0 Universal](LICENSE). The design files, flat patterns, scripts and documentation are dedicated to
+the public domain: anyone may copy, modify, manufacture, sell and redistribute them for any purpose,
+without asking permission or giving credit. They are provided as-is, with no warranty.
