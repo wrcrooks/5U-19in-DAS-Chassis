@@ -1,0 +1,534 @@
+{
+ "material": {
+  "name": "5052-H32 aluminium, 0.080 in (2.03 mm)",
+  "thickness": 2.032,
+  "k_factor": 0.48,
+  "bend_radius": 0.9652,
+  "die_width": 11.9888,
+  "min_flange": 7.9502,
+  "max_flat": [
+   762.0,
+   1117.6
+  ],
+  "max_bend_length": 1117.6
+ },
+ "units": "mm",
+ "parts": {
+  "Chassis": {
+   "thickness": 2.032,
+   "flat_size": [
+    848.236,
+    738.0
+   ],
+   "flat_area": 625255.8,
+   "cutouts": 34,
+   "min_web": 8.4,
+   "volume_check": 0.99985,
+   "formed_size": [
+    430.064,
+    738.0,
+    212.032
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        210.559,
+        0.0
+       ],
+       [
+        210.559,
+        738.0
+       ]
+      ]
+     ],
+     "total_length": 738.0,
+     "nearest_cutout": 15.959
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        637.677,
+        0.0
+       ],
+       [
+        637.677,
+        738.0
+       ]
+      ]
+     ],
+     "total_length": 738.0,
+     "nearest_cutout": 15.959
+    }
+   ]
+  },
+  "Bezel": {
+   "thickness": 2.032,
+   "flat_size": [
+    430.0,
+    221.0
+   ],
+   "flat_area": 62982.5,
+   "cutouts": 37,
+   "min_web": 3.997,
+   "volume_check": 1.0,
+   "formed_size": [
+    430.0,
+    2.032,
+    221.0
+   ],
+   "bends": []
+  },
+  "Back Panel": {
+   "thickness": 2.032,
+   "flat_size": [
+    470.236,
+    221.0
+   ],
+   "flat_area": 54052.9,
+   "cutouts": 35,
+   "min_web": 1.35,
+   "volume_check": 0.99991,
+   "formed_size": [
+    426.064,
+    25.032,
+    221.0
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        23.559,
+        10.0
+       ],
+       [
+        23.559,
+        30.0
+       ]
+      ],
+      [
+       [
+        23.559,
+        191.0
+       ],
+       [
+        23.559,
+        211.0
+       ]
+      ]
+     ],
+     "total_length": 40.0,
+     "nearest_cutout": 9.559
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        446.677,
+        10.0
+       ],
+       [
+        446.677,
+        30.0
+       ]
+      ],
+      [
+       [
+        446.677,
+        191.0
+       ],
+       [
+        446.677,
+        211.0
+       ]
+      ]
+     ],
+     "total_length": 40.0,
+     "nearest_cutout": 7.559
+    }
+   ]
+  },
+  "Chassis Rear Support Bracket": {
+   "thickness": 2.032,
+   "flat_size": [
+    465.236,
+    219.0
+   ],
+   "flat_area": 56927.5,
+   "cutouts": 31,
+   "min_web": 3.0,
+   "volume_check": 0.99991,
+   "formed_size": [
+    426.064,
+    22.532,
+    219.0
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        21.059,
+        10.0
+       ],
+       [
+        21.059,
+        28.0
+       ]
+      ],
+      [
+       [
+        21.059,
+        189.0
+       ],
+       [
+        21.059,
+        209.0
+       ]
+      ]
+     ],
+     "total_length": 38.0,
+     "nearest_cutout": 8.459
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        444.177,
+        10.0
+       ],
+       [
+        444.177,
+        28.0
+       ]
+      ],
+      [
+       [
+        444.177,
+        189.0
+       ],
+       [
+        444.177,
+        209.0
+       ]
+      ]
+     ],
+     "total_length": 38.0,
+     "nearest_cutout": 8.459
+    }
+   ]
+  },
+  "Drive Support Panel": {
+   "thickness": 2.032,
+   "flat_size": [
+    486.236,
+    440.5
+   ],
+   "flat_area": 80554.9,
+   "cutouts": 24,
+   "min_web": 4.5,
+   "volume_check": 0.9993,
+   "formed_size": [
+    426.064,
+    440.5,
+    33.032
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        31.559,
+        0.0
+       ],
+       [
+        31.559,
+        440.5
+       ]
+      ]
+     ],
+     "total_length": 440.5,
+     "nearest_cutout": 12.809
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        454.677,
+        0.0
+       ],
+       [
+        454.677,
+        440.5
+       ]
+      ]
+     ],
+     "total_length": 440.5,
+     "nearest_cutout": 12.809
+    }
+   ]
+  },
+  "Bezel Mounting Bracket": {
+   "thickness": 2.032,
+   "flat_size": [
+    41.554,
+    168.0
+   ],
+   "flat_area": 6874.9,
+   "cutouts": 5,
+   "min_web": 7.4,
+   "volume_check": 0.99844,
+   "formed_size": [
+    20.5,
+    24.0,
+    168.0
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        19.027,
+        0.0
+       ],
+       [
+        19.027,
+        168.0
+       ]
+      ]
+     ],
+     "total_length": 168.0,
+     "nearest_cutout": 6.427
+    }
+   ]
+  },
+  "Drive Bay Cover": {
+   "thickness": 2.032,
+   "flat_size": [
+    460.236,
+    488.95
+   ],
+   "flat_area": 224050.5,
+   "cutouts": 2,
+   "min_web": 81.95,
+   "volume_check": 0.99972,
+   "formed_size": [
+    436.128,
+    488.95,
+    15.0
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        13.527,
+        0.0
+       ],
+       [
+        13.527,
+        488.95
+       ]
+      ]
+     ],
+     "total_length": 488.95,
+     "nearest_cutout": 204.091
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        446.709,
+        0.0
+       ],
+       [
+        446.709,
+        488.95
+       ]
+      ]
+     ],
+     "total_length": 488.95,
+     "nearest_cutout": 204.091
+    }
+   ]
+  },
+  "Rear Electronics Cover": {
+   "thickness": 2.032,
+   "flat_size": [
+    460.236,
+    245.5
+   ],
+   "flat_area": 112497.0,
+   "cutouts": 1,
+   "min_web": 110.25,
+   "volume_check": 0.99972,
+   "formed_size": [
+    436.128,
+    245.5,
+    15.0
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        13.527,
+        0.0
+       ],
+       [
+        13.527,
+        245.5
+       ]
+      ]
+     ],
+     "total_length": 245.5,
+     "nearest_cutout": 204.091
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        446.709,
+        0.0
+       ],
+       [
+        446.709,
+        245.5
+       ]
+      ]
+     ],
+     "total_length": 245.5,
+     "nearest_cutout": 204.091
+    }
+   ]
+  },
+  "Attic Baffle": {
+   "thickness": 2.032,
+   "flat_size": [
+    469.608,
+    33.968
+   ],
+   "flat_area": 15909.2,
+   "cutouts": 2,
+   "min_web": 7.9,
+   "volume_check": 0.99973,
+   "formed_size": [
+    425.5,
+    25.0,
+    33.968
+   ],
+   "bends": [
+    {
+     "id": 1,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        23.527,
+        0.0
+       ],
+       [
+        23.527,
+        33.968
+       ]
+      ]
+     ],
+     "total_length": 33.968,
+     "nearest_cutout": 8.427
+    },
+    {
+     "id": 2,
+     "angle_deg": 90.0,
+     "direction": "up",
+     "inside_radius": 0.965,
+     "bend_allowance": 3.048,
+     "segments": [
+      [
+       [
+        446.081,
+        0.0
+       ],
+       [
+        446.081,
+        33.968
+       ]
+      ]
+     ],
+     "total_length": 33.968,
+     "nearest_cutout": 8.427
+    }
+   ]
+  }
+ }
+}

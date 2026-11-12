@@ -1,0 +1,4 @@
+* text=auto
+*.step text eol=lf linguist-generated
+# The DXF writer emits CRLF; store the files byte for byte
+*.dxf  -text linguist-generated
