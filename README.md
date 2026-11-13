@@ -14,6 +14,7 @@ backplane trays are 3D printed.
 |---|---|
 | Drives | 48 x 3.5 in, in 16 stacks of three, broad faces parallel to the airflow |
 | Backplanes | 4 x Supermicro BPN-SAS3-826EL1 / BPN-SAS3-826EL1-N4 (same hole pattern), on printed trays at 105.4 mm pitch |
+| SAS expanders | 2 x Adaptec AEC-82885T (36-port, 12 Gb/s) in the Back Panel card slots, external SFF-8644 to the host, powered by 4-pin Molex |
 | Fans | 3 x 120 mm in the Bezel and 3 x 120 mm in the fan wall behind the drives |
 | Envelope | 430 mm wide (436 mm over the cover flanges), 738 mm deep, 221 mm (5U) at the Bezel |
 | Airflow | Front to back: Bezel, drive array, fan wall, rear electronics, Back Panel exhaust |
@@ -41,6 +42,8 @@ tools/
 every change from the Onshape export and the reason for it, the material and bend parameters, a bend
 table per part, and the checks against SendCutSend's design rules.
 
+[`BOM.md`](BOM.md) is the bill of materials with a cost estimate for one build.
+
 ## Parts
 
 **Sheet metal** (STEP in `CAD/Revised/`, DXF in `CAD/Flat-Patterns/`):
@@ -66,6 +69,7 @@ table per part, and the checks against SendCutSend's design rules.
 | Backplane Tray Connector (joins Part A to Part B) | 8 | `CAD/Backplane Tray/` |
 | Backplane Tray Connector (Wide) (joins neighbouring trays) | 12 | `CAD/Revised/` |
 | Backplane Tray Air Dam | 4 | `CAD/Revised/` |
+| Card Edge Support | 1 | `CAD/Revised/` |
 
 The SFF8643 to M.2 Mounting Bracket is exported as designed in Onshape; how it will be made is undecided.
 
@@ -97,6 +101,9 @@ Each pattern is drawn looking at the face the flanges fold toward, so every bend
   sized to the real cable bundles or closed with brush strip or foam.
 - **Drive position on the backplane** is taken from the tray model, not measured on a real board. Check
   the Drive Support Panel openings against a populated backplane before cutting.
+- **Card Edge Support position is estimated.** The sideways position of the card PCBs is worked out from
+  the Back Panel openings, not measured on a card. The support's slotted holes give ±4 mm; check the fit
+  with a card in hand before drilling or ordering the Chassis.
 - **Empty drive positions** need printed blanks, or air will bypass the populated ones.
 - **Dust:** fit screw-on filters to the Bezel fan positions. The Bezel is aluminium, so magnetic filters
   will not hold.

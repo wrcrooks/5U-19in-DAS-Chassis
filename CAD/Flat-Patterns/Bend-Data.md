@@ -27,6 +27,7 @@ Run both commands from the repository root, in that order, after any change.
 | Backplanes spread from 82.3 mm to 105.4 mm pitch | Moves the two 46-48 mm side channels in between the four backplanes (Supermicro BPN-SAS3-826EL1), leaving 25.1 mm of air between stacks and 12.7 mm at each wall. Spacing inside a backplane (27.1 mm between drives, 109.6 mm between rows) is unchanged. |
 | Drive Support Panel: 16 openings, one per stack of three drives, in place of 48 single-drive slots | The old slots were exactly drive size (26.1 x 101.6 mm) with 1 mm strips between them. Each opening now has 0.5 mm clearance all round. |
 | Four Chassis floor holes at y = -284.6 moved to x = -173.55, -68.15, 37.25, 142.65 | Each stays under the same post of its printed Backplane Tray (tray post at 415.1, -51.6), as in the Onshape model. Hole size unchanged. |
+| Two new 5.2 mm holes in the Chassis floor at x = -182.2 and -44.7, y = 350 | Fix the printed Card Edge Support under the SAS expander cards. The support has slotted holes, so these positions are not critical. |
 
 `WALL_HEIGHT` and the dimensions of every new part are constants at the top of `tools/rebuild_parts.py`.
 

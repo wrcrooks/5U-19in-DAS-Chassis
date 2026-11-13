@@ -94,12 +94,28 @@ BAFFLE_Z = (PANEL_TOP_Z + 0.5, COVER_UNDER_Z - 0.5)
 BAFFLE_HALF_WIDTH = 212.75             # 0.25 clear of each side wall
 BAFFLE_TAB = 25.0
 BAFFLE_HOLE = (12.5, 201.0)            # (distance behind the baffle's front face, z)
+# Printed support for the edge connectors of the SAS expander cards (Adaptec AEC-82885T, low profile).
+# The cards hang from their brackets in the Back Panel; there is no motherboard slot under them.
+CARD_OPENING_X0 = -155.2                 # centre of the first Back Panel card opening (Onshape)
+CARD_PITCH = 20.3                        # Back Panel opening pitch (PCIe slot pitch is 20.32)
+CARD_SLOTS = 6
+CARD_PCB_DX = -9.0                       # PCB centre from its opening centre: estimate, not measured
+CARD_CHANNEL_W = 2.2                     # for a 1.57 mm PCB
+CARD_SUPPORT_Y = (320.0, 380.0)          # spans the x4 edge fingers, about 44-85 mm inside the Back Panel
+CARD_SUPPORT_H = 11.0                    # stays below the card's lower edge
+CARD_SUPPORT_BASE = 2.0                  # material under the channels
+CARD_EAR = (20.0, 5.0)                   # length beyond the outer channels, thickness
+CARD_EAR_SLOT = (5.5, 13.5)              # M5 slot, long in x: +/-4 mm of sideways adjustment
+CARD_SUPPORT_HOLES_X = [CARD_OPENING_X0 + CARD_PCB_DX - 18.0,
+                        CARD_OPENING_X0 + CARD_PCB_DX + (CARD_SLOTS - 1) * CARD_PITCH + 18.0]
+
 BAFFLE_FRONT_Y = [-297.0, 139.5]       # front face of the front and rear baffles
 
 
 def chassis_extra_holes():
-    """(centre, axis) of the holes the Attic Baffles need in the Chassis side walls."""
-    out = []
+    """(centre, axis) of the holes the Attic Baffles need in the Chassis side walls, and the two
+    floor holes for the Card Edge Support."""
+    out = [(V(x, sum(CARD_SUPPORT_Y) / 2, -10.0), V(0, 0, 1)) for x in CARD_SUPPORT_HOLES_X]
     for sx in (-1, 1):
         for yf in BAFFLE_FRONT_Y:
             out.append((V(sx * 205, yf + BAFFLE_HOLE[0], BAFFLE_HOLE[1]), V(sx, 0, 0)))
@@ -316,6 +332,35 @@ def build_air_dam(cx):
     return body.Solids[0]
 
 
+def build_card_support():
+    """Printed comb screwed to the floor: one open-ended channel per card slot holds the card's edge
+    fingers sideways. The channels are deep and open at both ends, so the card's height and its
+    distance from the Back Panel do not have to be known exactly; the bracket carries the weight."""
+    y0, y1 = CARD_SUPPORT_Y
+    pcb = [CARD_OPENING_X0 + CARD_PCB_DX + i * CARD_PITCH for i in range(CARD_SLOTS)]
+    ear, ear_t = CARD_EAR
+    z0 = 2.0                                                   # floor top
+    body = Part.makeBox(pcb[-1] - pcb[0] + 16.0, y1 - y0, CARD_SUPPORT_H, V(pcb[0] - 8.0, y0, z0))
+    base = Part.makeBox(pcb[-1] - pcb[0] + 2 * ear, y1 - y0, ear_t, V(pcb[0] - ear, y0, z0))
+    body = body.fuse(base)
+    top, w = z0 + CARD_SUPPORT_H, CARD_CHANNEL_W
+    for x in pcb:
+        body = body.cut(Part.makeBox(w, y1 - y0 + 2, CARD_SUPPORT_H, V(x - w / 2, y0 - 1, z0 + CARD_SUPPORT_BASE)))
+        # lead-in: the channel widens to 5 mm over its top 2.5 mm
+        tri = Part.makePolygon([V(x - 2.5, y0 - 1, top), V(x + 2.5, y0 - 1, top), V(x, y0 - 1, top - 4.5), V(x - 2.5, y0 - 1, top)])
+        body = body.cut(Part.Face(tri).extrude(V(0, y1 - y0 + 2, 0)))
+    sw, sl = CARD_EAR_SLOT
+    for x in CARD_SUPPORT_HOLES_X:
+        yc = (y0 + y1) / 2
+        slot = Part.makeBox(sl - sw, sw, 30, V(x - (sl - sw) / 2, yc - sw / 2, 0))
+        for dx in (-(sl - sw) / 2, (sl - sw) / 2):
+            slot = slot.fuse(Part.makeCylinder(sw / 2, 30, V(x + dx, yc, 0)))
+        body = body.cut(slot)
+    body = body.removeSplitter()
+    assert body.isValid() and len(body.Solids) == 1
+    return body.Solids[0]
+
+
 def build_tray_link():
     """Dog-bone connector for the side joints between Backplane Trays at the new spacing."""
     k = TRAY_LINK
@@ -384,6 +429,11 @@ def main():
     print("%-30s %8.3f x %8.3f x %8.3f  vol %.0f" % ("Backplane Tray Air Dam", dam.BoundBox.XLength,
           dam.BoundBox.YLength, dam.BoundBox.ZLength, dam.Volume))
 
+    comb = build_card_support()
+    save([("Card Edge Support", comb)], os.path.join(REVISED, "Card Edge Support.step"))
+    print("%-30s %8.3f x %8.3f x %8.3f  vol %.0f" % ("Card Edge Support", comb.BoundBox.XLength,
+          comb.BoundBox.YLength, comb.BoundBox.ZLength, comb.Volume))
+
     # Complete assembly: revised sheet parts, both brackets, and the untouched bought/printed parts.
     grow = T_STOCK - 2.0
     asm = [(n, s) for n, s in parts.items() if n not in ("Bezel Mounting Bracket", "Attic Baffle")]
@@ -397,8 +447,9 @@ def main():
         asm.append((n, h))
     for n in ("PSU", "SFF8643 to M.2 Mounting Bracket"):
         asm.append((n, src(n)))
+    asm.append(("Card Edge Support", comb))
     t = tray_parts()
-    new_parts += ["Backplane Tray", "Air Dam"]
+    new_parts += ["Backplane Tray", "Air Dam", "Card Edge Support"]
     for i, cx in enumerate(STACK_CX):
         asm.append(("Backplane Tray %d Part A" % (i + 1), tray_place(t["Part A"], cx)))
         asm.append(("Backplane Tray %d Part B" % (i + 1), tray_place(t["Part B"], cx)))
